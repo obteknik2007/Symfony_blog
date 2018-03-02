@@ -20,15 +20,21 @@
 
 {# SURCHARGE BLOCK BODY #}
 {% block body %}
+    {# Barre admin #}
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <a href="{{ path('app_admin_category_index') }}" class="navbar-brand">Menu admin</a>
+        </div>
+    </nav>
+    
+    {# Menu général #}
     <nav class="navbar navbar-default">
         <div class="container">
             <a class="navbar-brand" href="{{ path('app_index_index') }}">Blog</a>
         </div>    
     </nav> 
     <div class="container">
-       {% block content %}
-       
-       {% endblock %}
+       {% block content %}{% endblock %}
     </div>         
  
             
