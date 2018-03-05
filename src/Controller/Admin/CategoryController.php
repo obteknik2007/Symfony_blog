@@ -3,7 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -29,10 +31,69 @@ class CategoryController extends Controller
     }
     
     /**
-     * @Route("/edit")
+     * @Route("/edit/{id}", defaults={"id":null})
      */
-    public function edit()
+    public function edit(Request $request,$id)
     {
+        //entity manager gere les objets et les lignes en bdd
+        $em= $this->getDoctrine()->getManager();
         
+        if(is_null($id)){
+            $category = new Category();
+        } else {
+            $category = $em->getRepository(Category::class)->find($id);
+        }        
+        
+        //création du formulaire lié à la catégorie
+        $form = $this->createForm(CategoryType::class, $category);
+        
+        //le formulaire traite la requete HTTP
+        $form->handleRequest($request);
+        
+        //si le formulaire à été envoyé
+        if ($form->isSubmitted()){
+            //s'il n'y à pas d'erreurs de validation du formulaire
+            if ($form->isValid()){
+                //prepare l'enregistrement en bdd
+                $em->persist($category);
+                //fait l'enregistrement en bdd
+                $em->flush();
+                
+                //Ajout du message flash
+                $this->addFlash('success', 'La catégorie '.$category->getName().' a été enregistrée');
+                //redirection vers la liste
+                return $this->redirectToRoute('app_admin_category_index');                
+            } else {
+                $this->addFlash('error', 'Le formulaire contient des erreurs');
+            }
+        }
+        
+         return $this->render('admin/category/edit.html.twig', 
+                 [
+                     'form' => $form->createView()
+                 ]
+        );
     }
+    
+    /**
+     * @Route("/delete/{id}")
+     * @param int $id
+     */
+    public function delete($id){
+     
+        $em= $this->getDoctrine()->getManager();
+        
+        // raccourci ci-dessous pour $em->getRepository(Category::class)->find($id);
+        $category = $em->find(Category::class,$id);
+        
+        //suppression de la catégorie en bdd
+        $em->remove($category);
+        $em->flush(); //exécution de la suppression
+        
+        //message de validation et redirection vers liste des catégories
+        $this->addFlash('success', 'La catégorie '.$category->getName().' est supprimée');
+        return $this->redirectToRoute('app_admin_category_index');
+    }
+    
+    
 }

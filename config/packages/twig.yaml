@@ -2,3 +2,5 @@ twig:
     paths: ['%kernel.project_dir%/templates']
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    # ajout du thème bootstrap3 #
+    form_themes: ['bootstrap_3_layout.html.twig']

@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @UniqueEntity(fields="name", message="il existe déjà une catégorie de ce nom")
  */
 class Category
 {
@@ -19,6 +21,10 @@ class Category
     /**
      *@ORM\Column(length=20, unique=true)
      * @var string 
+     * 
+     * Validation
+     * @Assert\NotBlank(message="Le nom est oblgatoire")
+     * @Assert\Length(max=20,maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private $name;
 
@@ -35,6 +41,4 @@ class Category
         return $this;
     }
 
-    
-            // add your own fields
 }
