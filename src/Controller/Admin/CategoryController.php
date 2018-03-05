@@ -2,8 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/category")
@@ -17,8 +18,21 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $repository = $this->getDoctrine()->getRepository(Category::class);
+        
+        //on recup ttes les catégories
+        $categories = $repository->findAll();
+        
         return $this->render('admin/category/index.html.twig', [
-           
+           'categories' => $categories
         ]);
+    }
+    
+    /**
+     * @Route("/edit")
+     */
+    public function edit()
+    {
+        
     }
 }
