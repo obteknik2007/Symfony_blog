@@ -2,15 +2,17 @@
 
 namespace App\Entity;
 
+//use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="Cet email est déjà utilisé")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -36,7 +38,7 @@ class User
      /**
      * @ORM\Column(unique=true)
      * @Assert\NotBlank()
-     * @Assert\Email("Cet email n'est pas valide")
+     * @Assert\Email(message="Cet email n'est pas valide")
      * @var string
      */
     private $email;
@@ -115,6 +117,22 @@ class User
     public function setPlainPassword($plainPassword) {
         $this->plainPassword = $plainPassword;
         return $this;
+    }
+    
+    public function eraseCredentials() {
+        
+    }
+
+    public function getRoles() {
+        return [$this->role];
+    }
+
+    public function getSalt() {
+        
+    }
+
+    public function getUsername(): string {
+        return $this->email;
     }
 
 
