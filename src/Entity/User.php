@@ -23,7 +23,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column()
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Ce champ ne peut être vide")
      * @var string
      */
     private $lastname;
@@ -135,5 +135,8 @@ class User implements UserInterface
         return $this->email;
     }
 
-
+    public function getFullname()
+    {
+        return $this->firstname.' '.$this->lastname;
+    }
 }
