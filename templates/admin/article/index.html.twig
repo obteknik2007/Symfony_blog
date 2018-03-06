@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <h1>Gestion des articles</h1>
+    
+    <p>
+        <a href="{{ path('app_admin_article_edit') }}" 
+           class="btn btn-default">Ajouter un article</a>
+    </p>
+    
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Catégorie</th>
+            <th>Auteur</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Description</th>
+            <th width="200px"></th>
+        </tr>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.category.name }}</td>
+                <td>{{ article.author.lastname }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.content }}</td>
+                <td>{{ article.description }}</td>
+                
+                <td>
+                    <a href="{{ path('app_admin_article_edit',{id: article.id }) }}" 
+                       class="btn btn-primary">Modifier</a>
+                    
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

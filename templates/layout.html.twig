@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
           crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="{{ asset('style/style.css') }}"/>
 {% endblock %}
 
 {# SURCHARGE BLOCK JAVASCRIPTS à partir de Bootstrap 3 getting started#}
@@ -20,6 +22,7 @@
 
 {# SURCHARGE BLOCK BODY #}
 {% block body %}
+    
     {# Affichage de la barre admin que si rôle = admin #}
     {% if is_granted('ROLE_ADMIN') %}
         {# Barre admin #}
@@ -30,6 +33,9 @@
                     <li>
                         <a href="{{ path('app_admin_category_index') }}">Gestion des catégories</a>
                     </li>
+                    <li>
+                        <a href="{{ path('app_admin_article_index') }}">Gestion des articles</a>
+                    </li>                
                 </ul>
             </div>
         </nav>

@@ -3,3 +3,10 @@
 {% block content %}
     <h1>Accueil</h1>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        console.log('toto');
+    </script>
+{% endblock %}
