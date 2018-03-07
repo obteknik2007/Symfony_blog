@@ -40,5 +40,20 @@ class Category
         $this->name = $name;
         return $this;
     }
+    
+    /**
+     * Méthode magique appelée qd on essaie d'accéder
+     * à l'objet comme chaîne de caractère par exemple
+     * par un echo
+     * 
+     * @return string
+     */
+    public function __toString() {
+        //si on l'appelle en tant que string, on décide qu'elle retourne 
+        //le nom de la catégorie
+        return $this->name;
+    }
+
+    
 
 }

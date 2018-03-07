@@ -1,39 +1,39 @@
 {% extends 'layout.html.twig' %}
 
-
 {% block content %}
-    <h1>Gestion des articles</h1>
-    
+    <h1>Gestion article</h1>
     <p>
-        <a href="{{ path('app_admin_article_edit') }}" 
-           class="btn btn-default">Ajouter un article</a>
+        <a class="btn btn-primary" href="{{path('app_admin_article_edit')}}">Ajouter un article</a>
     </p>
-    
     <table class="table">
         <tr>
             <th>Id</th>
-            <th>Catégorie</th>
+            <th>Categorie</th>
             <th>Auteur</th>
-            <th>Title</th>
-            <th>Content</th>
+            <th>Titre</th>
+            <th>Contenu</th>
             <th>Description</th>
+            <th>Illustration</th>
             <th width="200px"></th>
         </tr>
         {% for article in articles %}
             <tr>
                 <td>{{ article.id }}</td>
-                <td>{{ article.category.name }}</td>
-                <td>{{ article.author.lastname }}</td>
+                {#<td>{{ article.category.name }}</td>#}
+                {# grace à la méthode __toString() : #}
+                <td>{{ article.category}}</td>
+                <td>{{ article.author}}</td>
                 <td>{{ article.title }}</td>
                 <td>{{ article.content }}</td>
                 <td>{{ article.description }}</td>
-                
                 <td>
-                    <a href="{{ path('app_admin_article_edit',{id: article.id }) }}" 
-                       class="btn btn-primary">Modifier</a>
-                    
+                    {% if article.image is not null %}
+                        <img src="{{ asset('upload/' ~ article.image) }}" width="100px">
+                    {% endif %}    
                 </td>
+                <td><a href="{{ path('app_admin_article_edit', {id: article.id}) }}" class="btn btn-primary">Modifier</a>
+                <a href="{{ path('app_admin_article_delete', {id: article.id}) }}" class="btn btn-danger">Supprimer</a></td>  
             </tr>
-        {% endfor %}
+        {% endfor %}    
     </table>
 {% endblock %}
