@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 06 mars 2018 à 17:30
+-- Généré le :  mer. 07 mars 2018 à 17:30
 -- Version du serveur :  10.1.22-MariaDB
 -- Version de PHP :  7.1.4
 
@@ -34,17 +34,21 @@ CREATE TABLE `article` (
   `author_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8_unicode_ci NOT NULL
+  `description` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `article`
 --
 
-INSERT INTO `article` (`id`, `category_id`, `author_id`, `title`, `content`, `description`) VALUES
-(1, 1, 2, 'Erreurs PHP', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre ', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.'),
-(2, 1, 2, 'Article sur PHP', 'lLe Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte p', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.'),
-(3, 4, 2, 'Erreurs jQuery', 'Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d\'entre elles a été altérée par l\'addition d\'humour ou de', 'Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d\'entre elles a été altérée par l\'addition d\'humour ou de mots aléatoires qui ne ressemblent pas une seconde à du texte standard. Si vous voulez utiliser un passage du Lorem Ipsum, vous devez être sûr qu\'il n\'y a rien d\'embarrassant caché dans le texte. Tous les générateurs de Lorem Ipsum sur Internet tendent à reproduire le même extrait sans fin, ce qui fait de lipsum.com le seul vrai générateur de Lorem Ipsum. Iil utilise un dictionnaire de plus de 200 mots latins, en combinaison de plusieurs structures de phrases, pour générer un Lorem Ipsum irréprochable. Le Lorem Ipsum ainsi obtenu ne contient aucune répétition, ni ne contient des mots farfelus, ou des touches d\'humour.');
+INSERT INTO `article` (`id`, `category_id`, `author_id`, `title`, `content`, `description`, `image`) VALUES
+(1, 1, 2, 'Erreurs PHP2', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.', '5a9ff4d486c23.jpeg'),
+(2, 1, 2, 'Article sur PHP', 'lLe Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte p', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.', ''),
+(4, 2, 2, 'Test article avec image', 'On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur l', 'm sur un texte générique comme \'Du texte. Du texte. Du texte.\' est qu\'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour \'Lorem Ipsum\' vous conduira vers de nombreux sites qui n\'en sont encore qu\'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d\'y rajouter de petits clins d\'oeil, voire des phrases embarassantes).', '5a9fc4439d25c.jpeg'),
+(5, 4, 2, 'ruby', 'azeazeazeaz', 'zeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaezaezaeaaaa\r\naaaaazeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae\r\nzaezaeaaaaaaaaazeaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaezaezaeaaaaaaaaazeaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaezaezaeaaaaaaaaazeaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaezaezaeaaaaaaaaa', NULL),
+(6, 6, 2, 'art sur cobol 1', 'dfd fdf df d', 'dfdsffffffffffffffffffffffffffff fffffffffffffdf                fdfd', NULL),
+(7, 1, 2, 'article PHP36', 'dsdsqdsq', 'fsdqfqdfdfdfd frd fdf', '5aa01074a60c0.jpeg');
 
 -- --------------------------------------------------------
 
@@ -62,6 +66,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
+(6, 'cobol'),
 (2, 'doctrine'),
 (4, 'Jquery'),
 (1, 'PHP'),
@@ -88,7 +93,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `lastname`, `firstname`, `email`, `password`, `role`) VALUES
 (2, 'BRASSART', 'Olivier', 'brassart_olivier@yahoo.fr', '$2y$13$EK99mKk.oa2OD2ARQkh2cO6vDJznEPOgreOGsgPjBGYjpnQTu2Gga', 'ROLE_ADMIN'),
-(3, 'MAITAM', 'Thierry', 'tmt@gmail.com', '$2y$13$6KidR5CtF6s9FehAAaSLnu8nVW150zi43Q4.OwZGlw73caExHOlEW', 'ROLE_USER');
+(3, 'MAITAM', 'Thierry', 'tmt@gmail.com', '$2y$13$6KidR5CtF6s9FehAAaSLnu8nVW150zi43Q4.OwZGlw73caExHOlEW', 'ROLE_USER'),
+(4, 'BROWN', 'Peter', 'p.brown@gmail.com', '$2y$13$bg2RXhtKF6QVzXj6RJNeEu0op6FBX0euckuvzOM1EzAEhDqX..n6a', 'ROLE_USER');
 
 --
 -- Index pour les tables déchargées
@@ -124,17 +130,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables déchargées
 --

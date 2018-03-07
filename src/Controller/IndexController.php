@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends Controller
 {
@@ -12,6 +13,16 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return $this->render('index/index.html.twig');
+        $articleRepository = $this->getDoctrine()->getRepository(Article::class);
+        //on appelle la méthode qui récupère les 3 derniers articles crées  dans
+        //App\Repository\ArticleRepository (.php)
+        $articles = $articleRepository->findLatest(3);
+        
+        return $this->render(
+            'index/index.html.twig',
+            [
+                'articles' => $articles
+            ]
+        );
     }
 }

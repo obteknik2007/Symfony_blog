@@ -36,7 +36,9 @@ class CategoryController extends Controller
        */
         
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repository->findBy(['category' => $category]);
+        //$articles = $repository->findBy(['category' => $category]);
+        //avec utilisation de findLatest()
+        $articles = $repository->findLatest(2,$category);
         
         return $this->render(
             'category/index.html.twig',
